@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery</title>
+    <link rel="stylesheet" href="stylesheet.css">
+    <link rel="stylesheet" href="gallery.css">
+    <link rel="icon" type="png" href="SKPFav.png">
+</head>
+<body>
+    <!-- Create the elements for the Navigation bar -->
+        <nav>
+            <img src="Logo.png" alt="Silent Kid Productions Logo" class="Logo">
+            <div id="NavLinks">
+            <a href="index.html" class="Button">Home</a>
+            <a href="gallery.html" class="Button">Gallery</a>
+            <a href="contact.html" class="Button">Contact</a>
+            </div>
+            <div id="Hamburger">☰</div>
+        </nav>
+    <!-- Create the header for the Gallery page -->
+        <header>
+            <h1>Gallery</h1>
+        </header>
+
+        <!-- Create the buttons that will be used to sort my content -->
+        <!-- apply data categories so that js can sort through them -->
+        <div id="Filter">
+            <button class="FilterBtn" type="button" data-category="All">All</button>
+            <button class="FilterBtn" type="button" data-category="Comp">Compositing</button>
+            <button class="FilterBtn" type="button" data-category="Editing">Editing</button>
+            <button class="FilterBtn" type="button" data-category="Sound">Sound Design</button>
+            <button class="FilterBtn" type="button" data-category="MotionGraphics">Motion Graphics</button>
+            <button class="FilterBtn" type="button" data-category="Photoshop">Photoshop</button>
+        </div>
+
+    <main>
+
+        <!-- Create the section which will hold all my gallery Content -->
+        <!-- To add more content copy and paste a div tag and update the src="" and the <p> tag -->
+        <section id="Gallery">
+            <div class="GalItem" data-category="MotionGraphics">
+            <iframe 
+                src="https://www.youtube.com/embed/4i7EB6u9UgQ?si=NyM8JfJ2beRFXiND"
+                frameborder="0"
+                allowfullscreen>
+            </iframe>
+            <p class="GalTitle">Title Sequence</p>
+            <p class="GalDescription">Animated a stylized title sequence in After Effects as a motion design exercise, focusing on timing and visual rhythm.</p>
+        </div>
+
+        <div class="GalItem" data-category="Comp">
+            <iframe 
+                src="https://www.youtube.com/embed/TpHNrfhoI48?si=fO4DI9-QaXmVAGDc"
+                frameborder="0"
+                allowfullscreen>
+            </iframe>
+            <p class="GalTitle">Ship Over Earth</p>
+            <p class="GalDescription">Digital assets composited into one scene.</p>
+        </div>
+
+        <div class="GalItem" data-category="Editing">
+            <iframe 
+                src="https://www.youtube.com/embed/u7oAeUsuSSg?si=AoKMbgF7-sB7n23Y"
+                frameborder="0"
+                allowfullscreen>
+            </iframe>
+            <p class="GalTitle">Conceptual Shooting</p>
+            <p class="GalDescription">Filmed and edited a one-minute conceptual visual study, using composition, lighting, and pacing to convey theme without audio.</p>
+        </div>
+
+        <div class="GalItem" data-category="Editing">
+            <iframe 
+                src="https://www.youtube.com/embed/H_kC6piNNhA?si=0IVpmVWPtanlVIMe"
+                frameborder="0"
+                allowfullscreen>
+            </iframe>
+            <p class="GalTitle">Anti-Littering PSA</p>
+            <p class="GalDescription">Filmed and edited a 30 second public service announcement addressing littering, focusing on visuals and impactful storytelling.</p>
+        </div>
+
+        <div class="GalItem" data-category="Editing">
+            <iframe 
+                src="https://www.youtube.com/embed/qZORoNELWhk?si=4OK5m_OXlT2CFpIO"
+                frameborder="0"
+                allowfullscreen>
+            </iframe>
+            <p class="GalTitle">Morning Routine</p>
+            <p class="GalDescription">Focused on taking a simple task and filming and editing it in an impactful manner.</p>
+        </div>
+
+        <div class="GalItem" data-category="Sound">
+            <iframe 
+                src="https://www.youtube.com/embed/U-SLbyBASqo?si=M7Ht2ZseqlSdrJlc"
+                frameborder="0"
+                allowfullscreen>
+            </iframe>
+            <p class="GalTitle">Alien SoundScape</p>
+            <p class="GalDescription">Recorded audio to mix into one aural environment.</p>
+        </div>
+
+        <div class="GalItem" data-category="Editing">
+            <iframe 
+                src="https://www.youtube.com/embed/aMyazn5Q-4M?rel=0"
+                frameborder="0"
+                allowfullscreen>
+            </iframe>
+            <p class="GalTitle">The Spa Edit</p>
+            <p class="GalDescription">Edited the short film 'The Spa' using professional footage provided for educational use, assembling the project according to the script with a focus on narrative pacing, continuity, and performance-driven editing.</p>
+        </div>
+
+        <div class="GalItem" data-category="Editing">
+            <iframe 
+                src="https://www.youtube.com/embed/AvOAN3dnvNE?rel=0"
+                frameborder="0"
+                allowfullscreen>
+            </iframe>
+            <p class="GalTitle">Aliens Got Talent</p>
+            <p class="GalDescription">Team-based short film created under strict time constraints as part of a 48 Hour Film Festival. Served as one of multiple editors, creating the initial edit to establish structure, pacing, and tone before handoff to the final production team, and animating a short sequence in After Effects. Credits: Josh Eisenberg, Blake Stone, Monique Barrios, Billy Espinosa, Abner Corona, Noah Walker, Dante Busch, Diego Ramos, Erin Boyle, Jay Ghandi</p>
+        </div>
+
+            <div class="GalItem" data-category="Photoshop">
+                <a href="Walker_FellowShipBluRayCover.png" class="LightboxLink">
+                    <div class="GalMedia ExpandOnHover">
+                        <img src="Walker_FellowShipBluRayCover.png" alt="Lord of The Rings DVD Cover">
+                    </div>
+                </a>
+                <p class="GalTitle">Lord of The Rings DVD Cover</p>
+                <p class="GalDescription">Designed a Lord of The Rings BluRay Cover. (Click to Expand)</p>
+            </div>
+
+            <div class="GalItem" data-category="Photoshop">
+                <a href="Walker_Flyer.png" class="LightboxLink">
+                    <div class="GalMedia ExpandOnHover">
+                        <img src="Walker_Flyer.png" alt="Concert Flyer">
+                    </div>
+                </a>
+                <p class="GalTitle">Concert Flyer</p>
+                <p class="GalDescription">Designed a concert flyer for a made up Stevie Wonder Concert. (Click to Expand)</p>
+            </div>
+
+            <div class="GalItem" data-category="Photoshop">
+                <a href="Walker_StillLife.png" class="LightboxLink">
+                    <div class="GalMedia ExpandOnHover">
+                        <img src="Walker_StillLife.png" alt="Abstract Still Life">
+                    </div>
+                </a>
+                <p class="GalTitle">Abstract Still Life</p>
+                <p class="GalDescription">Photographed and editied an abstract still life with a theme of time. (Click to Expand)</p>
+            </div>
+
+            <div class="GalItem" data-category="Photoshop">
+                <a href="WalkerAbstractSelfPortrait.png" class="LightboxLink">
+                    <div class="GalMedia ExpandOnHover">
+                        <img src="WalkerAbstractSelfPortrait.png" alt="Abstract Self Portrait">
+                    </div>
+                </a>
+                <p class="GalTitle">Abstract Self Portrait</p>
+                <p class="GalDescription">Took a self portrait and turned it into an abstract visual. (Click to Expand)</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Link the JavaScirpt File -->
+    <script src="script.js"></script>
+
+    <!-- Create a footer with a link to the Contact page -->
+    <footer>
+        <div id="ContactMe">
+            <h1>Get in Touch</h1>
+            <a href="contact.html" class="Button">Contact Me</a>
+        </div>
+    </footer>
+</body>
+
+<div id="Lightbox">
+    <button id="LightboxClose">✕</button>
+    <img id="LightboxImg" alt="">
+</div>
+</html>

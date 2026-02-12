@@ -1,0 +1,295 @@
+/* Here I am setting up the fonts I will be using for this webpage. */
+@font-face {
+/*Here I am naming my font so that I can refernce it*/
+font-family: 'LemonMilk';
+/*Here I am linking my font file so that when I refernce it it knows what the font looks like*/
+src: url('lemon_milk/LEMONMILK-Light.otf') format('opentype');
+/*these tags let the code know that the style and weight should be normal rather than bold or italic*/
+font-weight: normal; 
+font-style: normal; 
+}
+@font-face {
+/*Here I am naming my font so that I can refernce it*/
+font-family: 'Belgiano';
+/*Here I am linking my font file so that when I refernce it it knows what the font looks like*/
+src: url('belgiano_serif/Belgiano Serif 2.ttf') format('truetype');
+/*these tags let the code know that the style and weight should be normal rather than bold or italic*/
+font-weight: normal; 
+font-style: normal; 
+}
+
+/* Here I am making sure padding and borders do not mess up element sizing */
+*{
+    box-sizing: border-box;
+}
+
+/* Here I am setting the base background color for the entire page */
+html{
+    background-color: #0A0A0A;
+}
+body{
+    margin: 0;
+    background-color: #0A0A0A;
+    min-height: 100vh;
+    color: white;
+}
+
+/* Here I am removing default spacing so sections can touch the edge of the screen */
+body{
+    margin: 0;
+}
+
+/* Here I am making images and videos scale to the screen instead of overflowing */
+img, video{
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Here I am defining a global button style so it works everywhere */
+.Button{
+    border: solid 1px white;
+    font-size: 1rem;
+    color: white;
+    margin: 5px;
+    text-decoration: none;
+    border-radius: 6px;
+    font-family: 'LemonMilk', serif;
+    transition: background-color 0.3s, transform 0.15s;
+    padding:10px 18px;
+    cursor:pointer;
+    display: inline-block;
+    white-space: nowrap;
+}
+.Button:hover{
+    background-color: #1d1d1d;
+    transform: translateY(-1px);
+}
+
+/* NAVIGATION BAR */
+/* Here I am making the nav transparent at the top of the page */
+nav{
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 8px;
+
+    background-color: transparent;
+
+    position: fixed; 
+    top: 0; 
+    left: 0;
+    width: 100%;
+    z-index: 1000; 
+
+    padding-left: 14px;
+    padding-right: 14px;
+
+    transition: background-color 0.3s ease;
+}
+
+/* Hide hamburger on desktop */
+#Hamburger{
+    display: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: white;
+}
+
+/* Mobile styles */
+@media (max-width: 850px){
+
+    /* Show hamburger */
+    #Hamburger{
+        display: block;
+        position: relative;
+        z-index: 1001;
+    }
+
+    /* Hide nav links initially */
+    #NavLinks{
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+
+        background: #0A0A0A;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+
+        transform: translateY(-100%);
+        transition: transform 0.3s ease;
+    }
+
+    /* When open */
+    #NavLinks.active{
+        transform: translateY(0);
+    }
+
+    #NavLinks a{
+        font-size: 1.8rem;
+    }
+}
+
+/* Here I am preventing the nav from dropping to a second line on small screens */
+@media (max-width: 520px){
+    nav{
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .Logo{
+        width: 110px;
+        padding: 8px;
+    }
+
+    .Button{
+        padding: 8px 12px;
+        font-size: 0.95rem;
+        margin: 4px;
+    }
+}
+
+/* Here I am defining the scrolled state of the nav */
+nav.scrolled{
+    background-color: rgba(18, 18, 18, 0.85);
+    backdrop-filter: blur(10px);
+}
+
+/* Here I am making sure the logo stays a normal size */
+.Logo{
+    width: clamp(110px, 12vw, 180px);
+    height: auto;
+    margin-right:auto;
+    padding: 10px;
+}
+
+/* HEADER */
+/* Here I am making ONLY the home hero fill the full screen and center the text */
+#Hero{
+    background-color: #0A0A0A;
+    color: white;
+    font-family: 'LemonMilk', serif;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    min-height: 100vh;
+
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+/* Here I am making the title scale based on screen size (HOME HERO ONLY) */
+#Hero h1 {
+    font-size: clamp(2.3rem, 6vw, 5rem);
+    margin: 0;
+}
+
+/* Here I am making the subtitle scale and keeping the font you chose (HOME HERO ONLY) */
+#Hero h2 {
+    font-family: 'Belgiano', serif;
+    font-size: clamp(1.3rem, 3.2vw, 2.5rem);
+    margin: 8px 0 16px;
+    font-weight: normal;
+    opacity: .5;
+}
+
+/* Here I am making your header button stand out (HOME HERO ONLY) */
+#Hero .Button {
+    background: #fff;
+    color: #121212;
+    border: none;
+    border-radius: 0px;
+}
+#Hero .Button:hover{
+    background-color: #d8d8d8;
+    transform: translateY(-1px) scale(1.02);
+}
+
+/* Here I am styling the full width About section */
+#HomePage{
+    background-color: #0A0A0A;
+    color: white;
+
+    padding-top: clamp(40px, 6vw, 80px);
+    padding-bottom: clamp(80px, 8vw, 120px);
+}
+
+/* Here I am creating a centered layout container */
+.HomeContainer{
+    max-width: 1200px;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: clamp(30px, 4vw, 60px);
+    align-items: center;
+
+    padding-left: clamp(16px, 4vw, 40px);
+    padding-right: clamp(16px, 4vw, 40px);
+}
+
+/* Here I am stacking the columns on smaller screens */
+@media (max-width: 950px){
+    .HomeContainer{
+        grid-template-columns: 1fr;
+        text-align: center;
+        justify-items: center;
+    }
+
+    /* Here I am forcing the image to sit under the text */
+    #SelfPhoto{
+        margin-top: 24px;
+    }
+
+    #SelfPhoto img{
+        width: min(520px, 100%);
+    }
+}
+
+#AboutMe h1{
+    font-family: 'LemonMilk', serif;
+    font-size: clamp(1.8rem, 3.3vw, 2.5rem);
+    margin: 0 0 10px;
+}
+#AboutMe p{
+    font-family: 'Belgiano', serif;
+    font-size: clamp(1.15rem, 1.9vw, 1.5rem);
+    opacity: .85;
+    margin: 0 0 14px;
+}
+
+#SelfPhoto img{
+    width: min(600px, 100%);
+    margin: 0 auto;
+}
+
+/* FOOTER */
+footer{
+    text-align: center;
+    background-color: #0A0A0A;
+    color: white;
+    font-family: 'LemonMilk', serif;
+    padding-top: 24px;
+    padding-bottom: 44px;
+    padding-left: 14px;
+    padding-right: 14px;
+    margin-top: 0px;
+}
+#ContactMe{
+    max-width: 1200px;
+    margin: 0 auto;
+}
+#ContactMe h1{
+    margin: 0 0 12px;
+    font-size: clamp(1.4rem, 2.3vw, 2rem);
+}

@@ -1,0 +1,113 @@
+/* HEADER */
+/* Here I am pushing the header down so it does not hide under the fixed nav */
+header{
+    background-color: #0A0A0A;
+    text-align: center;
+    color: white;
+    font-family: 'LemonMilk', serif;
+    padding-top: 90px;
+    padding-bottom: 28px;
+    padding-left: 14px;
+    padding-right: 14px;
+}
+header h1{
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    margin: 0;
+}
+
+/* MAIN CONTENT */
+/* Here I am creating a centered container so nothing relies on big left margins */
+#Contact{
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: clamp(14px, 2.2vw, 28px);
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(18px, 3vw, 40px);
+    align-items: center;
+}
+
+@media (max-width: 950px) {
+    #Contact {
+        grid-template-columns: 1fr;
+        text-align: center;
+        justify-items: center;
+    }
+}
+
+/* TITLE SECTION */
+#Title{
+    margin-left: 0;
+    width: 100%;
+}
+#Title h1{
+    font-family: 'LemonMilk', serif;
+    font-size: clamp(1.8rem, 3.2vw, 2.5rem);
+    margin: 0 0 10px;
+}
+#Title h2{
+    font-family: 'Belgiano', serif;
+    font-size: clamp(1.2rem, 2.2vw, 1.7rem);
+    font-weight: normal;
+    opacity: .85;
+    margin: 0;
+    line-height: 1.35;
+}
+
+/* FORM SECTION */
+#Form{
+    width: 100%;
+}
+form{
+    width: 100%;
+    max-width: 520px;
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    padding: clamp(18px, 2.2vw, 26px);
+    border: 1px solid rgba(0,0,0,.12);
+    border-radius: 10px;
+    background: #121212;
+}
+label{
+    font-family: 'LemonMilk', serif;
+    font-size: .95rem;
+    text-align: left;
+}
+input, textarea{
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid rgba(0,0,0,.25);
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: Arial, sans-serif;
+    background-color: #333;
+}
+textarea{
+    min-height: 140px;
+    resize: vertical;
+}
+input:focus, textarea:focus{
+    outline: none;
+    border-color: rgba(0,0,0,.6);
+}
+button{
+    margin-top: 6px;
+    padding: 12px 14px;
+    background: #333;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'LemonMilk', serif;
+    font-size: 1rem;
+    transition: background-color 0.3s, transform 0.15s;
+}
+button:hover{
+    background-color: #1d1d1d;
+    transform: translateY(-1px);
+}
