@@ -81,3 +81,23 @@ const navLinks = document.getElementById("NavLinks");
 hamburger.addEventListener("click", () => {
     navLinks.classList.toggle("active");
 });
+
+/* HERO VIDEO OPTIMIZATION */
+const heroVideo = document.getElementById("HeroVideo");
+
+if(heroVideo){
+
+    const observer = new IntersectionObserver((entries)=>{
+        entries.forEach(entry=>{
+            if(entry.isIntersecting){
+                heroVideo.play();
+            } else {
+                heroVideo.pause();
+            }
+        });
+    },{
+        threshold: 0.25
+    });
+
+    observer.observe(heroVideo);
+}
