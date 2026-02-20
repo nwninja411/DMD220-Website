@@ -21,10 +21,22 @@
     
     <!-- Create the header or hero for the home page -->
         <header id="Hero">
-            <h1>Noah Walker</h1>
-            <h2>Digital Video Major</h2>
-            <!-- add a link to my linkedin and make it so it takes you to a new tab rather than replacing the current page -->
-            <a href="https://www.linkedin.com/in/noah-walker-1b229a306/" target="_blank" class="Button">LinkedIn</a>
+
+            <!-- Background Video -->
+            <video id="HeroVideo" autoplay muted loop playsinline preload="metadata" poster="HeroPoster.jpg">
+                <source src="HeroBg.mp4" type="video/mp4">
+            </video>
+
+            <!-- Dark Overlay -->
+            <div class="HeroOverlay"></div>
+
+            <!-- Hero Text Content -->
+            <div class="HeroContent">
+                <h1>Noah Walker</h1>
+                <h2>Digital Video Major</h2>
+                <a href="https://www.linkedin.com/in/noah-walker-1b229a306/" target="_blank" class="Button">LinkedIn</a>
+            </div>
+
         </header>
     
     <!-- Create a section for the homepage contents -->
