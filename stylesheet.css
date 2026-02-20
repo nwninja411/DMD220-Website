@@ -189,9 +189,12 @@ nav.scrolled{
 }
 
 /* Here I am making the title scale based on screen size (HOME HERO ONLY) */
-#Hero h1 {
+#Hero h1{
     font-size: clamp(2.3rem, 6vw, 5rem);
     margin: 0;
+    color: rgba(210, 230, 255, .9);
+    mix-blend-mode: normal;
+    text-shadow: 0 2px 18px rgba(0,0,0,0.45);
 }
 
 /* Here I am making the subtitle scale and keeping the font you chose (HOME HERO ONLY) */
@@ -200,19 +203,22 @@ nav.scrolled{
     font-size: clamp(1.3rem, 3.2vw, 2.5rem);
     margin: 8px 0 16px;
     font-weight: normal;
-    opacity: .5;
+    opacity: .65;
+
+    color: rgba(210, 230, 255, 1);
+    mix-blend-mode: normal;
+    text-shadow: 0 2px 18px rgba(0,0,0,0.45);
 }
 
 /* Here I am making your header button stand out (HOME HERO ONLY) */
-#Hero .Button {
-    background: #fff;
-    color: #121212;
-    border: none;
-    border-radius: 0px;
+#Hero .Button{
+    background-color: rgba(255,255,255,.75) !important;
+    color: rgba(24, 26, 29, 0.85) !important;
+    border: 1px solid rgba(210, 230, 255, 0.35);
 }
 #Hero .Button:hover{
-    background-color: #d8d8d8;
-    transform: translateY(-1px) scale(1.02);
+    background-color: rgba(255, 255, 255, 0.534) !important;
+    border: 1px solid rgba(210, 230, 255, 0.55);
 }
 
 /* Here I am styling the full width About section */
@@ -327,7 +333,6 @@ footer{
     left: 0;
     width: 100%;
     height: 100%;
-
     background: rgba(0,0,0,0.45);
     z-index: 1;
 }
@@ -349,4 +354,51 @@ footer{
 #Hero .Button:hover{
     background-color: #d8d8d8;
     transform: translateY(-1px) scale(1.02);
+}
+
+/* Smooth scrolling + offset for fixed nav */
+html{
+    scroll-behavior: smooth;
+    scroll-padding-top: 50px; /* adjust if your nav is taller/shorter */
+}
+
+/* Also ensure the target section accounts for the fixed nav */
+#HomePage{
+    scroll-margin-top: 50px; /* same number as above */
+}
+
+/* Scroll hint button */
+.ScrollHint{
+    position: absolute;
+    left: 50%;
+    bottom: 18px;
+    transform: translateX(-50%);
+    z-index: 4;
+
+    text-decoration: none;
+    padding: 10px 12px;
+    border-radius: 999px;
+
+    background-color: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.18);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+}
+
+.ScrollHintIcon{
+    width: 28px;
+    height: 28px;
+    display: block;
+    fill: rgba(210, 230, 255, 0.75);
+    animation: ScrollBounce 1.4s ease-in-out infinite;
+}
+
+@keyframes ScrollBounce{
+    0%, 100% { transform: translateY(0); opacity: 0.7; }
+    50%      { transform: translateY(6px); opacity: 1; }
+}
+
+/* Optional: hide if the hero is very short */
+@media (max-height: 520px){
+    .ScrollHint{ display: none; }
 }
