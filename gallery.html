@@ -3,11 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+    if (sessionStorage.getItem("filmTransition") === "1") {
+        document.documentElement.classList.add("is-transitioning");
+    }
+    </script>
     <title>Gallery</title>
     <link rel="stylesheet" href="stylesheet.css">
     <link rel="stylesheet" href="gallery.css">
     <link rel="icon" type="png" href="SKPFav.png">
 </head>
+
+<div id="FilmTransition" aria-hidden="true">
+    <video id="GrainVideo" autoplay muted loop playsinline preload="auto">
+        <source src="FilmGrain.mp4" type="video/mp4">
+    </video>
+</div>
+
 <body>
     <!-- Create the elements for the Navigation bar -->
         <nav>
