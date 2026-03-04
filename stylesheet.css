@@ -466,3 +466,133 @@ html{
   }
   #Hero .HeroContent h2{ opacity: 0.65 !important; }
 }
+
+/* ===== Footer layout ===== */
+
+footer{
+    width: 100%;
+    padding: 45px 0px;
+    background: rgba(255,255,255,0.04);
+    border-top: 1px solid rgba(255,255,255,0.12);
+}
+
+/* center the content inside the full-width footer */
+#ContactMe{
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* tighten spacing */
+#ContactMe h1{
+    margin-bottom: 5px;
+}
+
+#ContactMe .Button{
+    margin-bottom: 0px;
+}
+
+/* "Or connect with me" text */
+.FooterSubtitle{
+    margin: 10px 0px 5px;
+    font-size: 0.95rem;
+    opacity: 0.75;
+}
+
+.FooterSubtitle::before{
+    content: "";
+    display: block;
+    width: 120px;
+    height: 1px;
+    margin: 14px auto 12px;
+    background: rgba(255,255,255,0.18);
+}
+
+/* LinkedIn icon */
+.LinkedInIcon{
+    width: 52px;
+    height: 52px;
+
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 999px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: transform 0.15s ease, background-color 0.25s ease;
+}
+
+.LinkedInIcon:hover{
+    transform: translateY(-2px);
+    background-color: rgba(255,255,255,0.06);
+}
+
+.LinkedInIcon img{
+    width: 22px;
+    height: 22px;
+}
+
+.FooterDivider{
+    width: 120px;
+    height: 1px;
+    margin: 18px auto;
+    background: rgba(255,255,255,0.18);
+}
+
+/* ===== Tighter footer spacing ===== */
+
+footer{
+    padding: 34px 20px;
+    background: rgba(255,255,255,0.04);
+    border-top: 1px solid rgba(255,255,255,0.12);
+}
+
+#ContactMe{
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* tighten the title */
+#ContactMe h1{
+    margin: 0 0 10px 0;
+    font-size: 2rem;
+    letter-spacing: 0.06em;
+}
+
+/* remove extra spacing from the button */
+#ContactMe .Button{
+    margin: 0;
+}
+
+/* divider */
+.FooterDivider{
+    width: 110px;
+    height: 1px;
+    margin: 12px auto;
+    background: rgba(255,255,255,0.14);
+}
+
+/* LinkedIn icon */
+.LinkedInIcon{
+    width: 46px;
+    height: 46px;
+    border: 1px solid rgba(255,255,255,0.22);
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.15s ease, background-color 0.25s ease;
+}
+
+.LinkedInIcon:hover{
+    transform: translateY(-2px);
+    background-color: rgba(255,255,255,0.06);
+}
+
+.LinkedInIcon img{
+    width: 20px;
+    height: 20px;
+    display: block;
+}
