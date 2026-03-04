@@ -1,209 +1,413 @@
-/* HEADER */
-header{
-    background-color: #0A0A0A;
-    text-align: center;
-    color: white;
-    font-family: 'LemonMilk', serif;
-    padding-top: 90px;
-    padding-bottom: 28px;
-    padding-left: 14px;
-    padding-right: 14px;
-}
-header h1{
-    font-size: clamp(1.8rem, 4vw, 2.6rem);
-    margin: 0;
+/* ===============================
+   GLOBAL (prevents width/padding weirdness)
+================================ */
+*, *::before, *::after{
+  box-sizing: border-box;
 }
 
-/* FILTER */
+/* ===============================
+   PAGE HEADER + GLOW
+================================ */
+.PageHeader{
+  padding-top: 90px;
+  padding-bottom: 36px;
+  padding-left: 14px;
+  padding-right: 14px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* glow layer (animatable) */
+.PageHeader::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: radial-gradient(1200px 320px at 50% 0%, rgba(210,230,255,0.08), transparent 60%);
+  opacity: 0;
+  animation: glowOn .6s ease-out forwards;
+}
+
+@keyframes glowOn{
+  from{opacity:0;}
+  to{opacity:1;}
+}
+
+/* header card */
+.HeaderInner{
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 36px 32px 30px;
+
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 12px;
+  background: rgba(18,18,18,0.35);
+  backdrop-filter: blur(8px);
+
+  position: relative;
+  z-index: 1;
+
+  opacity: 0;
+  animation: headerIn .45s ease forwards;
+  animation-delay: .22s;
+}
+
+@keyframes headerIn{
+  from{opacity:0; transform: translateY(-10px);}
+  to{opacity:1; transform: translateY(0);}
+}
+
+.PageHeader h1{
+  font-family: 'LemonMilk', serif;
+  font-size: clamp(2.4rem, 5vw, 3.4rem);
+  margin: 0;
+  color: rgba(210,230,255,0.95);
+  text-shadow: 0 2px 18px rgba(0,0,0,0.45);
+}
+
+/* ===============================
+   FILTER
+================================ */
 #Filter{
-    text-align:center;
-    margin: 18px auto 10px;
-    max-width: 1200px;
-    padding: 0 14px 10px;
+  text-align:center;
+  margin: 18px auto 10px;
+  max-width: 1200px;
+  padding: 0 14px 10px;
 
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap: 10px;
+
+  opacity: 0;
+  animation: sectionIn .28s ease-out forwards;
+  animation-delay: .34s;
 }
+
+@keyframes sectionIn{
+  from{opacity:0; transform: translateY(10px);}
+  to{opacity:1; transform: translateY(0);}
+}
+
 .FilterBtn{
-    padding:10px 18px;
-    background:#333;
-    color:#fff;
-    border:none;
-    border-radius:6px;
-    cursor:pointer;
-    font-family: 'LemonMilk', serif;
-    transition:background-color .3s, transform .15s;
+  padding: 10px 18px;
+  background:#333;
+  color:#fff;
+  border:none;
+  border-radius: 6px;
+  cursor:pointer;
+  font-family: 'LemonMilk', serif;
+  transition: background-color .25s, transform .15s;
 }
 .FilterBtn:hover{
-    background-color: #252525;
-    transform: scale(1.06);
+  background:#252525;
+  transform: scale(1.06);
 }
 .FilterBtn.active{
-    background: #222;
-    transform: translateY(-1px);
-}
-.hidden { 
-    display: none !important; 
+  background:#222;
+  transform: translateY(-1px);
 }
 
-/* GALLERY GRID */
-#Gallery {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: clamp(14px, 2.2vw, 28px);
+.hidden{
+  display:none !important;
+}
 
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
+/* ===============================
+   GALLERY GRID
+================================ */
+#Gallery{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: clamp(14px, 2.2vw, 28px);
+
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap: 20px;
+}
+
+/* ===============================
+   GALLERY CARDS
+================================ */
+.GalItem{
+  width: calc((100% - (20px * 2)) / 3);
+  max-width: 380px;
+
+  padding: 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(18,18,18,0.35);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 14px 40px rgba(0,0,0,0.35);
+
+  position: relative;
+  z-index: 1;
+
+  transition: transform .25s ease, box-shadow .25s ease;
 }
 
 .GalItem{
-    width: calc((100% - (20px * 2)) / 3);
-    max-width: 380px;
+  --hoverScale: 1;
+  transform: translateY(0) scale(var(--hoverScale));
+}
+.GalItem:hover{
+  --hoverScale: 1.06;
 }
 
-/* UNIFORM MEDIA CARD */
+.GalItem:hover{
+  z-index: 100;
+  box-shadow: 0 22px 70px rgba(0,0,0,0.55);
+}
+
+/* subtle top highlight line */
+.GalItem::after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  top:0;
+  height: 16px;
+  border-radius: 14px 14px 0 0;
+  background: linear-gradient(to bottom, rgba(210,230,255,0.14), transparent);
+  pointer-events:none;
+  opacity: 0;
+  transition: opacity .25s ease;
+}
+.GalItem:hover::after{
+  opacity: 1;
+}
+
+/* ===============================
+   MEDIA (IMPORTANT: your iframes are DIRECT children of .GalItem)
+================================ */
+.GalItem > iframe,
+.GalItem > video{
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 10px;
+  background: black;
+  display: block;
+  border: 0;
+}
+
+/* image entries use .GalMedia wrapper */
 .GalMedia{
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    overflow: hidden;
-    border-radius: 10px;
-    background: black;
-}
-
-.GalMedia img,
-.GalMedia video,
-.GalMedia iframe{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
-/* Allow overlap */
-.GalItem {
-  position: relative;
-}
-
-.GalItem video{
   width: 100%;
   aspect-ratio: 16 / 9;
+  overflow: hidden;
   border-radius: 10px;
   background: black;
-  display: block;
+}
+.GalMedia img{
+  width: 100%;
+  height: 100%;
   object-fit: cover;
+  display:block;
 }
-.GalItem iframe{
+
+/* IMAGE: reveal original aspect ratio on card hover */
+.GalMedia{
+  background: black; /* ensures black bars show */
+}
+
+.GalMedia img{
   width: 100%;
-  aspect-ratio: 16 / 9;
-  border-radius: 10px;
-  background: black;
+  height: 100%;
+  object-fit: cover;           /* default cropped look */
   display: block;
 }
 
-/* Hover expansion */
-.ExpandOnHover {
-  transition: transform .25s ease, box-shadow .25s ease;
+/* Smooth cover -> contain reveal WITH black bars */
+.RevealFit{
   position: relative;
-  z-index: 1;
+  overflow: hidden;
+  background: black;          /* bars are black */
 }
 
-.ExpandOnHover:hover {
-  transform: scale(1.25);
-  z-index: 100;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
-}
-
-/* Reveal original ratio on hover */
-.ExpandOnHover img {
+/* base image is COVER (cropped) */
+.RevealFit img{
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  transition: object-fit .2s ease;
+  display: block;
+
+  opacity: 1;
+  transition: opacity .25s ease;   /* fade out smoothly */
 }
 
-.ExpandOnHover:hover img {
-  object-fit: contain;
-  background: black;
+/* contain layer (uncropped) sits on top */
+.RevealFit::after{
+  content:"";
+  position: absolute;
+  inset: 0;
+
+  background-image: var(--img);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+
+  opacity: 0;
+  transition: opacity .25s ease;   /* fade in smoothly */
+  pointer-events: none;
 }
 
-.GalItem video,
-.GalItem iframe{
-  transition: transform .25s ease, box-shadow .25s ease;
-  position: relative;
-  z-index: 1;
-  transform-origin: center;
+/* On hover: fade OUT the cover image, fade IN the contain layer */
+.GalItem:hover .RevealFit img{
+  opacity: 0;
 }
 
-.GalItem video:hover,
-.GalItem iframe:hover{
-  transform: scale(1.25);
-  z-index: 100;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+.GalItem:hover .RevealFit::after{
+  opacity: 1;
 }
 
-/* Titles */
+/* On hover, fade in the contain layer */
+.GalItem:hover .RevealFit::after{
+  opacity: 1;
+}
+
+/* Default layer stays as cover */
+.RevealFit img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display:block;
+}
+
+/* On hover, fade in the contain layer */
+.GalItem:hover .RevealFit::after{
+  opacity: 1;
+}
+
+
+/* ===============================
+   TEXT
+================================ */
 .GalTitle{
-    width: 100%;
-    text-align: center;
-    font-family: monospace;
-    font-size: clamp(1.05rem, 1.7vw, 1.35rem);
-    margin: 12px 0 4px;
+  width: 100%;
+  text-align: center;
+  font-family: monospace;
+  font-size: clamp(1.05rem, 1.7vw, 1.35rem);
+  margin: 12px 0 4px;
 }
-
 .GalDescription{
-    width: 100%;
-    text-align: center;
-    font-family: monospace;
-    font-size: 0.9rem;
-    opacity: 0.75;
-    margin: 0;
+  width: 100%;
+  text-align: center;
+  font-family: monospace;
+  font-size: 0.9rem;
+  opacity: 0.75;
+  margin: 0;
+  line-height: 1.35;
 }
 
-/* LIGHTBOX */
+/* ===============================
+   ANIMATIONS
+   - Intro load: can be cinematic (delayed)
+   - Filter click: instant start (0s wait) via #Gallery.reflow
+================================ */
+@keyframes cardIn{
+  from{ opacity:0; transform: translateY(14px) scale(var(--hoverScale)); }
+  to{   opacity:1; transform: translateY(0)    scale(var(--hoverScale)); }
+}
+
+/* intro load (optional): only if <body class="intro"> */
+body.intro .GalItem{
+  opacity: 0;
+  transform: translateY(14px);
+  animation: cardIn .45s ease forwards;
+}
+
+/* intro stagger (starts later so header/filter lead) */
+body.intro #Gallery .GalItem:nth-child(1){ animation-delay: .55s; }
+body.intro #Gallery .GalItem:nth-child(2){ animation-delay: .60s; }
+body.intro #Gallery .GalItem:nth-child(3){ animation-delay: .65s; }
+body.intro #Gallery .GalItem:nth-child(4){ animation-delay: .70s; }
+body.intro #Gallery .GalItem:nth-child(5){ animation-delay: .75s; }
+body.intro #Gallery .GalItem:nth-child(6){ animation-delay: .80s; }
+body.intro #Gallery .GalItem:nth-child(7){ animation-delay: .85s; }
+body.intro #Gallery .GalItem:nth-child(8){ animation-delay: .90s; }
+body.intro #Gallery .GalItem:nth-child(9){ animation-delay: .95s; }
+body.intro #Gallery .GalItem:nth-child(10){ animation-delay: 1.00s; }
+body.intro #Gallery .GalItem:nth-child(11){ animation-delay: 1.05s; }
+body.intro #Gallery .GalItem:nth-child(12){ animation-delay: 1.10s; }
+
+/* FILTER-CLICK CASCADE (instant start): add class "reflow" to #Gallery */
+#Gallery.reflow .GalItem{
+  opacity: 0;
+  transform: translateY(14px);
+  animation: cardIn .45s ease forwards;
+}
+
+/* reflow stagger starts at 0s (NO WAIT) */
+#Gallery.reflow .GalItem:nth-child(1){ animation-delay: 0s; }
+#Gallery.reflow .GalItem:nth-child(2){ animation-delay: .05s; }
+#Gallery.reflow .GalItem:nth-child(3){ animation-delay: .10s; }
+#Gallery.reflow .GalItem:nth-child(4){ animation-delay: .15s; }
+#Gallery.reflow .GalItem:nth-child(5){ animation-delay: .20s; }
+#Gallery.reflow .GalItem:nth-child(6){ animation-delay: .25s; }
+#Gallery.reflow .GalItem:nth-child(7){ animation-delay: .30s; }
+#Gallery.reflow .GalItem:nth-child(8){ animation-delay: .35s; }
+#Gallery.reflow .GalItem:nth-child(9){ animation-delay: .40s; }
+#Gallery.reflow .GalItem:nth-child(10){ animation-delay: .45s; }
+#Gallery.reflow .GalItem:nth-child(11){ animation-delay: .50s; }
+#Gallery.reflow .GalItem:nth-child(12){ animation-delay: .55s; }
+
+/* ===============================
+   LIGHTBOX
+================================ */
 #Lightbox{
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.85);
-    display: none;
-    justify-content: center;
-    align-items: center;
-    z-index: 2000;
-    padding: 24px;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  padding: 24px;
 }
-
-#Lightbox.active{
-    display: flex;
-}
-
+#Lightbox.active{ display:flex; }
 #LightboxImg{
-    max-width: min(1100px, 92vw);
-    max-height: 88vh;
-    border-radius: 10px;
+  max-width: min(1100px, 92vw);
+  max-height: 88vh;
+  border-radius: 10px;
 }
-
 #LightboxClose{
-    position: absolute;
-    top: 20px;
-    right: 25px;
-    font-size: 30px;
-    background: none;
-    border: none;
-    color: white;
-    cursor: pointer;
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  font-size: 30px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
 }
 
+/* ===============================
+   RESPONSIVE
+================================ */
 @media (max-width: 950px){
-    .GalItem{
-        width: calc((100% - 20px) / 2);
-        max-width: 520px;
-    }
+  .GalItem{
+    width: calc((100% - 20px) / 2);
+    max-width: 520px;
+  }
+}
+@media (max-width: 620px){
+  .GalItem{
+    width: 100%;
+    max-width: 520px;
+  }
 }
 
-@media (max-width: 620px){
-    .GalItem{
-        width: 100%;
-        max-width: 520px;
-    }
+/* ===============================
+   REDUCED MOTION
+================================ */
+@media (prefers-reduced-motion: reduce){
+  .PageHeader::before,
+  .HeaderInner,
+  #Filter,
+  body.intro .GalItem,
+  #Gallery.reflow .GalItem{
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }
