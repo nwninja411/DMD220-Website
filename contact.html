@@ -52,17 +52,21 @@
 
             <!-- Create a div for the actual form in the contact section. This allows for grid to be used -->
             <div id="Form">
-                <form action="" method="post">
-                    <label for="Name">Full Name</label>
-                    <input type="text" id="name" name="name" placeholder="Your name" required>
+                <form action="https://formspree.io/f/mwvnggkz" method="POST">
 
-                    <label for="email">Email Address</label>
-                    <input type="email" id="email" name="email" placeholder="you@example.com" required>
+                    <input type="hidden" name="_subject" value="New message from portfolio website">
 
-                    <label for="message">Your Message</label>
-                    <textarea id="message" name="message" rows="4" placeholder="Type your message..."></textarea>
+                    <label for="name">Name</label>
+                    <input type="text" name="name" required>
+
+                    <label for="email">Email</label>
+                    <input type="email" name="email" required>
+
+                    <label for="message">Message</label>
+                    <textarea name="message" required></textarea>
 
                     <button type="submit">Submit</button>
+
                 </form>
             </div>
         </section>
