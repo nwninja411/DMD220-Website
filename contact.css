@@ -202,3 +202,24 @@ button:hover{
   }
 
 }
+
+/* LinkedIn logo under contact description */
+
+.ContactLinkedIn{
+  display: inline-block;
+  margin-top: 15px;
+
+  opacity: 0.85;
+  transition: opacity .25s ease, transform .15s ease;
+}
+
+.ContactLinkedIn:hover{
+  opacity: 1;
+  transform: translateY(-1px);
+}
+
+.ContactLinkedIn img{
+  height: 30px;
+  width: auto;
+  display: block;
+}
