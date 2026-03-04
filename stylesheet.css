@@ -403,31 +403,62 @@ html{
     .ScrollHint{ display: none; }
 }
 
-/* FILM GRAIN PAGE TRANSITION */
-/* Here I am keeping the grain overlay ready, and only showing it during navigation */
-#FilmTransition{
-    position: fixed;
-    inset: 0;
-    z-index: 9999;
+/* ===============================
+   HOME HERO INTRO ANIMATION (WORKING)
+   Noah -> Major -> Button -> Scroll hint
+================================ */
 
-    opacity: 0;
-    pointer-events: none;
-
-    transition: opacity 1.2s ease;
+/* Video fades in */
+#HeroVideo{
+  opacity: 0;
+  animation: heroVideoIn 0.9s ease forwards;
+  animation-delay: 0.05s;
+}
+@keyframes heroVideoIn{
+  to{ opacity: 1; }
 }
 
-/* Here I am forcing it visible instantly on the next page before it renders */
-html.is-transitioning #FilmTransition{
-    opacity: 1;
-    pointer-events: all;
+/* Start hidden (NO !important so animation can override) */
+#Hero .HeroContent h1,
+#Hero .HeroContent h2,
+#Hero .HeroContent .Button,
+#Hero .ScrollHint{
+  opacity: 0;
+  transform: translateY(10px);
 }
 
-#GrainVideo{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+/* Animate in (with final opacity values) */
+#Hero .HeroContent h1{
+  animation: heroH1In 0.55s ease forwards;
+  animation-delay: 0.18s;
+}
+#Hero .HeroContent h2{
+  animation: heroH2In 0.55s ease forwards;
+  animation-delay: 0.32s;
+}
+#Hero .HeroContent .Button{
+  animation: heroBtnIn 0.55s ease forwards;
+  animation-delay: 0.46s;
+}
+#Hero .ScrollHint{
+  animation: heroHintIn 0.55s ease forwards;
+  animation-delay: 0.60s;
+}
 
-    /* This makes it feel like film grain over the page */
-    mix-blend-mode: overlay;
-    opacity: .9;
+@keyframes heroH1In{ to{ opacity: 1;    transform: translateY(0); } }
+@keyframes heroH2In{ to{ opacity: 0.65; transform: translateY(0); } } /* matches your #Hero h2 style */
+@keyframes heroBtnIn{ to{ opacity: 1;    transform: translateY(0); } }
+@keyframes heroHintIn{to{ opacity: 1;    transform: translateY(0); } }
+
+@media (prefers-reduced-motion: reduce){
+  #HeroVideo,
+  #Hero .HeroContent h1,
+  #Hero .HeroContent h2,
+  #Hero .HeroContent .Button,
+  #Hero .ScrollHint{
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  #Hero .HeroContent h2{ opacity: 0.65 !important; }
 }
