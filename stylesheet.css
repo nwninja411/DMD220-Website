@@ -421,10 +421,14 @@ html{
 /* Start hidden (NO !important so animation can override) */
 #Hero .HeroContent h1,
 #Hero .HeroContent h2,
-#Hero .HeroContent .Button,
-#Hero .ScrollHint{
+#Hero .HeroContent .Button{
   opacity: 0;
   transform: translateY(10px);
+}
+
+#Hero .ScrollHint{
+  opacity: 0;
+  transform: translateX(-50%) translateY(10px);
 }
 
 /* Animate in (with final opacity values) */
@@ -448,7 +452,7 @@ html{
 @keyframes heroH1In{ to{ opacity: 1;    transform: translateY(0); } }
 @keyframes heroH2In{ to{ opacity: 0.65; transform: translateY(0); } } /* matches your #Hero h2 style */
 @keyframes heroBtnIn{ to{ opacity: 1;    transform: translateY(0); } }
-@keyframes heroHintIn{to{ opacity: 1;    transform: translateY(0); } }
+@keyframes heroHintIn{ to{ opacity: 1; transform: translateX(-50%) translateY(0); }}
 
 @media (prefers-reduced-motion: reduce){
   #HeroVideo,
