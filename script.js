@@ -34,16 +34,36 @@ document.addEventListener("DOMContentLoaded", function(){
         }
 
         btnFilters.forEach(function(button){
-            button.addEventListener("click", function(){
+        button.addEventListener("click", function(){
 
-                btnFilters.forEach(function(btn){
-                    btn.classList.remove("active");
-                });
-
-                button.classList.add("active");
-                applyFilter(button.dataset.category);
+            btnFilters.forEach(function(btn){
+                btn.classList.remove("active");
             });
+
+            button.classList.add("active");
+            applyFilter(button.dataset.category);
+
+            // ✅ INSTANT CASCADE (0s start) AFTER FILTER APPLIES
+            const visible = [...document.querySelectorAll("#Gallery .GalItem")]
+                .filter(item => !item.classList.contains("hidden"));
+
+            visible.forEach((item, i) => {
+                // reset any previous animation + delays
+                item.style.animation = "none";
+                item.style.animationDelay = "0s";
+                item.style.opacity = "0";
+                item.style.transform = "translateY(14px)";
+
+                // force restart
+                void item.offsetHeight;
+
+                // start immediately (first item delay = 0s)
+                item.style.animation = "cardIn 0.45s ease forwards";
+                item.style.animationDelay = `${i * 0.05}s`;
+            });
+
         });
+    });
 
         btnFilters.forEach(function(btn){ btn.classList.remove("active"); });
         if(btnFilters[0]){ btnFilters[0].classList.add("active"); }
@@ -51,10 +71,11 @@ document.addEventListener("DOMContentLoaded", function(){
     }
 
     /* LIGHTBOX */
-    const lightbox = document.getElementById("Lightbox");
-    const lightboxImg = document.getElementById("LightboxImg");
-    const closeBtn = document.getElementById("LightboxClose");
+const lightbox = document.getElementById("Lightbox");
+const lightboxImg = document.getElementById("LightboxImg");
+const closeBtn = document.getElementById("LightboxClose");
 
+if (lightbox && lightboxImg && closeBtn) {
     document.querySelectorAll(".LightboxLink").forEach(link => {
         link.addEventListener("click", function(e){
             e.preventDefault();
@@ -72,8 +93,7 @@ document.addEventListener("DOMContentLoaded", function(){
             lightbox.classList.remove("active");
         }
     });
-
-});
+}
 
 const hamburger = document.getElementById("Hamburger");
 const navLinks = document.getElementById("NavLinks");
@@ -100,56 +120,4 @@ if(heroVideo){
     });
 
     observer.observe(heroVideo);
-}
-
-/* FILM GRAIN TRANSITION (SEAMLESS FEEL) */
-document.addEventListener("DOMContentLoaded", function(){
-
-    const transition = document.getElementById("FilmTransition");
-    const grainVideo = document.getElementById("GrainVideo");
-
-    /* Here I am fading OUT only if we are arriving from another internal page */
-    if(sessionStorage.getItem("filmTransition") === "1"){
-        sessionStorage.removeItem("filmTransition");
-
-        if(grainVideo){
-            const playPromise = grainVideo.play();
-            if(playPromise){ playPromise.catch(()=>{}); }
-        }
-
-        /* Let the browser paint one frame with the overlay ON, then fade it out */
-        requestAnimationFrame(()=>{
-            requestAnimationFrame(()=>{
-                document.documentElement.classList.remove("is-transitioning");
-            });
-        });
-    }
-
-    /* Here I am intercepting internal links so we can play the transition before leaving */
-    document.querySelectorAll("a").forEach(link=>{
-        const url = link.getAttribute("href");
-        if(!url) return;
-
-        const isExternal = url.startsWith("http") || url.startsWith("mailto:");
-        const isAnchor = url.startsWith("#");
-
-        if(isExternal || isAnchor) return;
-
-        link.addEventListener("click", function(e){
-            e.preventDefault();
-
-            sessionStorage.setItem("filmTransition", "1");
-            document.documentElement.classList.add("is-transitioning");
-
-            if(grainVideo){
-                const playPromise = grainVideo.play();
-                if(playPromise){ playPromise.catch(()=>{}); }
-            }
-
-            setTimeout(()=>{
-                window.location.href = url;
-            }, 220);
-        });
-    });
-
-});
+}});
